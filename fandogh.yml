@@ -1,0 +1,15 @@
+kind: ExternalService
+name: screenshot
+spec:
+  image: screenshot:1.0.1
+  image_pull_policy: Always
+  replicas: 1
+  port: 80
+  allow_http: true
+  env:
+    - name: PORT
+      value: 80
+  domains:
+    - name: screenshot.talio.ir
+  resources:
+    memory: 200Mi
