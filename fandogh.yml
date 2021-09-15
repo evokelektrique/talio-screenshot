@@ -12,4 +12,4 @@ spec:
   domains:
     - name: screenshot.talio.ir
   resources:
-    memory: 200Mi
+    memory: 512Mi
