@@ -5,11 +5,11 @@ const express = require("express")
 // Database Initialization
 const pgp = require('pg-promise')();
 const connection = {
-  host: "localhost",
+  host: process.env.DATABASE_HOST || "localhost",
   port: 5432,
-  user: "postgres",
-  password: "password",
-  database: "talio_dev",
+  user: process.env.DATABASE_USER || "postgres",
+  password: process.env.DATABASE_PASSWORD || "password",
+  database: process.env.DATABASE_DB || "talio_dev",
   max: 10
 }
 const db = pgp(connection);
@@ -112,7 +112,7 @@ let Screenshot = {
   app: express(),
   port: process.env.PORT || 3000,
 
-  secret_key: process.env.SECRET_KEY || "development_secret_key",
+  secret_key: process.env.SCREENSHOT_SECRET_KEY || "development_secret_key",
 
   // Puppeteer Config
   defaults: {

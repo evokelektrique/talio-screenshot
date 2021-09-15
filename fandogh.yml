@@ -1,7 +1,7 @@
 kind: ExternalService
 name: screenshot
 spec:
-  image: screenshot:1.0.1
+  image: screenshot:1.0.2
   image_pull_policy: Always
   replicas: 1
   port: 80
@@ -9,6 +9,16 @@ spec:
   env:
     - name: PORT
       value: 80
+    - name: DATABASE_HOST
+      value: postgresdb
+    - name: DATABASE_DB
+      value: talio_prod
+    - name: DATABASE_USER
+      value: postgres
+    - name: DATABASE_PASSWORD
+      secret: postgres-password
+    - name: SCREENSHOT_SECRET_KEY
+      secret: screenshot-secret-key
   domains:
     - name: screenshot.talio.ir
   resources:
